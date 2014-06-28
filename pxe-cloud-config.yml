@@ -1,40 +1,16 @@
 #cloud-config
 coreos:
   units:
-    - name: etcd.service
-      command: start
-    - name: fleet.service
-      command: start
-    - name: docker2.service
-      command: start
-      content: |
-        [Unit]
-        Description=Docker Application Container Engine Too
-        After=network.target
-        [Service]
-        #ExecStartPre=/bin/mount --make-rprivate /
-        # Run docker but don't have docker automatically restart
-        # containers. This is a job for systemd and unit files.
-        # ExecStart=/usr/bin/docker -d -s=btrfs -r=false -H fd:// -D
-        ExecStart=/usr/bin/docker -d -r=false -D
-        [Install]
-        WantedBy=multi-user.target
     - name: hello.service
       command: start
       content: |
         [Install]
         WantedBy=multi-user.target
         [Unit]
-        Description=My Service
-        After=docker2.service
-        Requires=docker2.service
+        Description=Install to disk
         
         [Service]
-        ExecStart=/usr/bin/docker run -d -p 80:80 tutum/hello-world
-        Restart=always
-        RestartSec=30
-ssh_authorized_keys:
-  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAYQC2PxAKTLdczK9+RNsGGPsz0eC2pBlydBEcrbI7LSfiN7Bo5hQQVjki+Xpnp8EEYKpzu6eakL8MJj3E28wT/vNklT1KyMZrXnVhtsmOtBKKG/++odpaavdW2/AU0l7RZiE=
+        ExecStart=cd /home/user1;wget https://bitbucket.org/wouterm/bootserver/raw/master/cloud-config.yml;wget https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install;coreos-install -d /dev/sda -c cloud-config.yml;reboot
 
 users:
   - name: user1

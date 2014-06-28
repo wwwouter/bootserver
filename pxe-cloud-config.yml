@@ -16,6 +16,7 @@ coreos:
         #ExecStartPre=/bin/mount --make-rprivate /
         # Run docker but don't have docker automatically restart
         # containers. This is a job for systemd and unit files.
+        # ExecStart=/usr/bin/docker -d -s=btrfs -r=false -H fd:// -D
         ExecStart=/usr/bin/docker -d -r=false -D
         [Install]
         WantedBy=multi-user.target

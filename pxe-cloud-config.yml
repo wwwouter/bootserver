@@ -15,4 +15,3 @@ users:
     groups:
       - sudo
       - docker
-		

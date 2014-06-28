@@ -5,7 +5,7 @@ coreos:
       command: start
     - name: fleet.service
       command: start
-    - name: docker.service
+    - name: docker.service2
       command: start
       content: |
         [Unit]
@@ -21,14 +21,14 @@ coreos:
         [Install]
         WantedBy=multi-user.target
     - name: hello.service
-      command: restart
+      command: start
       content: |
         [Install]
         WantedBy=multi-user.target
         [Unit]
         Description=My Service
-        After=docker.service
-        Requires=docker.service
+        After=docker.service2
+        Requires=docker.service2
         
         [Service]
         ExecStart=/usr/bin/docker run -d -p 80:80 tutum/hello-world

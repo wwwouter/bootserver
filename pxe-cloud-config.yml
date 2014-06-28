@@ -6,7 +6,7 @@ coreos:
     - name: fleet.service
       command: start
     - name: docker.service
-      command: restart
+      command: start
       content: |
         [Unit]
         Description=Docker Application Container Engine 

@@ -5,5 +5,14 @@ coreos:
       command: start
     - name: fleet.service
       command: start
+
 ssh_authorized_keys:
   - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAYQC2PxAKTLdczK9+RNsGGPsz0eC2pBlydBEcrbI7LSfiN7Bo5hQQVjki+Xpnp8EEYKpzu6eakL8MJj3E28wT/vNklT1KyMZrXnVhtsmOtBKKG/++odpaavdW2/AU0l7RZiE=
+
+users:
+  - name: user1
+    passwd: $6$rounds=4096$bkatHG2Eib2UY3$sDopDivMNba013rhlaeH0WHc3K5eNlKNVgyoeMu6sYo1IyKDVE.I9uEYukSARCVTaJtjFgQUThqfAlLGrmgA./
+    groups:
+      - sudo
+      - docker
+		

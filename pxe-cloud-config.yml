@@ -32,9 +32,6 @@ coreos:
         
         [Service]
         ExecStart=/usr/bin/docker run -d -p 80:80 tutum/hello-world
-        
-        [Install]
-        WantedBy=multi-user.target
 ssh_authorized_keys:
   - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAYQC2PxAKTLdczK9+RNsGGPsz0eC2pBlydBEcrbI7LSfiN7Bo5hQQVjki+Xpnp8EEYKpzu6eakL8MJj3E28wT/vNklT1KyMZrXnVhtsmOtBKKG/++odpaavdW2/AU0l7RZiE=
 

@@ -9,8 +9,7 @@ coreos:
       command: start
       content: |
         [Unit]
-        Description=Docker Application Container Engine 
-        Documentation=http://docs.docker.io
+        Description=Docker Application Container Engine Too
         After=network.target
         [Service]
         #ExecStartPre=/bin/mount --make-rprivate /

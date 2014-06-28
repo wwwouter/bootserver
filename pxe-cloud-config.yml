@@ -21,7 +21,7 @@ coreos:
         [Install]
         WantedBy=multi-user.target
     - name: hello.service
-      command: start
+      command: restart
       content: |
         [Install]
         WantedBy=multi-user.target

@@ -5,6 +5,20 @@ coreos:
       command: start
     - name: fleet.service
       command: start
+    - name: docker.service
+      command: restart
+      content: |
+        [Unit]
+        Description=Docker Application Container Engine 
+        Documentation=http://docs.docker.io
+        After=network.target
+        [Service]
+        ExecStartPre=/bin/mount --make-rprivate /
+        # Run docker but don't have docker automatically restart
+        # containers. This is a job for systemd and unit files.
+        ExecStart=/usr/bin/docker -d -s=btrfs -r=false -H fd:// -D
+        [Install]
+        WantedBy=multi-user.target
     - name: hello.service
       command: start
       content: |

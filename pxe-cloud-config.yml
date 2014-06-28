@@ -10,7 +10,7 @@ coreos:
         Description=Install to disk
         
         [Service]
-        ExecStart=cd /home/user1;wget https://bitbucket.org/wouterm/bootserver/raw/master/cloud-config.yml;wget https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install;coreos-install -d /dev/sda -c cloud-config.yml;reboot
+        ExecStart=/bin/sh -c "cd /home/user1;wget https://bitbucket.org/wouterm/bootserver/raw/master/cloud-config.yml;wget https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install;coreos-install -d /dev/sda -c cloud-config.yml;reboot"
 
 users:
   - name: user1
